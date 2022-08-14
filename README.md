@@ -20,7 +20,7 @@ terraform {
   }
 }
 
-module "restic_repository" {
+module "server" {
   source = "github.com/aidant/terraform-vultr-docker"
 }
 ```
