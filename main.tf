@@ -25,9 +25,8 @@ resource "vultr_instance" "server" {
   region            = var.vultr_server_region
   plan              = var.vultr_server_plan
   os_id             = 1743
-  label = var.name
-  tags = [var.name]
-  hostname = var.name
+  label             = var.name
+  hostname          = var.name
   firewall_group_id = vultr_firewall_group.server.id
   enable_ipv6       = true
 
