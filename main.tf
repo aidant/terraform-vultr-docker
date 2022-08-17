@@ -61,6 +61,7 @@ resource "vultr_instance" "server" {
       "su - ${var.username}",
       "mkdir ~/.ssh ~/${var.username}",
       "echo \"${tls_private_key.ssh_key.public_key_openssh}\" >> ~/.ssh/authorized_keys",
+      "exit",
     ]
   }
 }
