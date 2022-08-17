@@ -43,9 +43,10 @@ resource "vultr_instance" "server" {
       "#!/bin/bash",
 
       "set -euo pipefail",
+      "export DEBIAN_FRONTEND=noninteractive",
 
       "apt-get update",
-      "apt-get upgrade -y",
+      "apt-get upgrade",
 
       # Install Docker
       "apt-get install ca-certificates curl gnupg lsb-release",
