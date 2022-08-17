@@ -8,7 +8,7 @@ variable "name" {
   }
 }
 
-variable "dns_name" {
+variable "domain_name" {
   type        = string
   description = "The domain name to use for the server."
 }

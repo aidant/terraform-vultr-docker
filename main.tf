@@ -65,7 +65,7 @@ resource "vultr_instance" "server" {
 }
 
 resource "google_dns_record_set" "domain_ipv4" {
-  name         = var.dns_name
+  name         = "${var.domain_name}."
   managed_zone = var.dns_managed_zone
   type         = "A"
   ttl          = 60
@@ -74,7 +74,7 @@ resource "google_dns_record_set" "domain_ipv4" {
 }
 
 resource "google_dns_record_set" "domain_ipv6" {
-  name         = var.dns_name
+  name         = "${var.domain_name}."
   managed_zone = var.dns_managed_zone
   type         = "AAAA"
   ttl          = 60
@@ -85,11 +85,11 @@ resource "google_dns_record_set" "domain_ipv6" {
 resource "vultr_reverse_ipv4" "domain_reverse_ipv4" {
   instance_id = vultr_instance.server.id
   ip          = vultr_instance.server.main_ip
-  reverse     = var.dns_name
+  reverse     = var.domain_name
 }
 
 resource "vultr_reverse_ipv6" "domain_reverse_ipv6" {
   instance_id = vultr_instance.server.id
   ip          = vultr_instance.server.v6_main_ip
-  reverse     = var.dns_name
+  reverse     = var.domain_name
 }
