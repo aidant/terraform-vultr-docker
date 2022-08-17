@@ -58,10 +58,8 @@ resource "vultr_instance" "server" {
       # Create User
       "adduser --disabled-password --gecos \"\" ${var.username}",
       "usermod -aG docker ${var.username}",
-      "su - ${var.username}",
-      "mkdir ~/.ssh ~/${var.username}",
-      "echo \"${tls_private_key.ssh_key.public_key_openssh}\" >> ~/.ssh/authorized_keys",
-      "exit",
+      "su - ${var.username} -c \"mkdir ~/.ssh ~/${var.username}\"",
+      "su - ${var.username} -c \"echo \\\"${tls_private_key.ssh_key.public_key_openssh}\\\" >> ~/.ssh/authorized_keys\"",
     ]
   }
 }
